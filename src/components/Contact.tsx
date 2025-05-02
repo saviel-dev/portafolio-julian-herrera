@@ -20,7 +20,7 @@ const Contact = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       console.log("Form submitted:", formData);
@@ -28,7 +28,7 @@ const Contact = () => {
         title: "¡Mensaje enviado!",
         description: "Gracias por contactarme. Te responderé pronto.",
       });
-      
+
       // Reset form
       setFormData({
         name: "",
@@ -50,7 +50,7 @@ const Contact = () => {
             ¿Interesado en trabajar juntos?
           </h3>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Estoy abierto a nuevas oportunidades y colaboraciones. 
+            Estoy abierto a nuevas oportunidades y colaboraciones.
             No dudes en contactarme para discutir tu proyecto o propuesta.
           </p>
         </div>
@@ -60,34 +60,34 @@ const Contact = () => {
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
               <div className="w-12 h-12 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail text-blue-600">
-                  <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
               </div>
               <h4 className="font-bold text-gray-900 mb-2">Email</h4>
               <a href="mailto:hello@example.com" className="text-blue-600 hover:underline">
-                hello@example.com
+                saviel.dev@gmail.com
               </a>
             </div>
-            
+
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
               <div className="w-12 h-12 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-map-pin text-blue-600">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
               <h4 className="font-bold text-gray-900 mb-2">Ubicación</h4>
-              <p className="text-gray-600">Ciudad de México, México</p>
+              <p className="text-gray-600">Estado Miranda, Venezuela</p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
               <div className="w-12 h-12 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin text-blue-600">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" />
                 </svg>
               </div>
               <h4 className="font-bold text-gray-900 mb-2">LinkedIn</h4>
-              <a href="#" className="text-blue-600 hover:underline">
-                /in/miusuario
+              <a href="https://www.linkedin.com/in/saviel-julian-isculpi-herrera-102818346/" className="text-blue-600 hover:underline" target="_blank">
+                /in/saviel-julian-isculpi-herrera-102818346
               </a>
             </div>
           </div>
@@ -123,7 +123,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            
+
             <div className="mb-6">
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                 Mensaje
@@ -138,7 +138,7 @@ const Contact = () => {
                 required
               ></textarea>
             </div>
-            
+
             <Button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700"

@@ -25,7 +25,7 @@ const About = () => {
               Pasión por crear soluciones digitales impactantes
             </h3>
             <p className="text-gray-600 mb-4">
-              Soy un desarrollador full-stack con experiencia en crear aplicaciones web dinámicas y responsive. 
+              Soy un desarrollador full-stack con experiencia en crear aplicaciones y sitios web dinámicss y responsives. 
               Mi enfoque se centra en escribir código limpio y optimizado para ofrecer la mejor experiencia de usuario.
             </p>
             <p className="text-gray-600 mb-6">
@@ -36,19 +36,19 @@ const About = () => {
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="bg-white p-4 rounded-lg shadow-sm">
                 <h4 className="font-bold text-gray-900 mb-2">Frontend</h4>
-                <p className="text-sm text-gray-600">HTML5, CSS3, JavaScript, Responsive Design</p>
+                <p className="text-sm text-gray-600">HTML5, CSS3 y JS, tailwindcss, bootstrap, React, Responsive Design</p>
               </div>
               <div className="bg-white p-4 rounded-lg shadow-sm">
                 <h4 className="font-bold text-gray-900 mb-2">Backend</h4>
-                <p className="text-sm text-gray-600">Node.js, Express, RESTful APIs, Bases de datos</p>
+                <p className="text-sm text-gray-600">Node.js, Express.js, Laravel, Bases de datos</p>
               </div>
               <div className="bg-white p-4 rounded-lg shadow-sm">
                 <h4 className="font-bold text-gray-900 mb-2">Herramientas</h4>
-                <p className="text-sm text-gray-600">Git, GitHub, VS Code, Terminal</p>
+                <p className="text-sm text-gray-600">Git, GitHub, VS Code, Terminal, cursor, Miro, UXpilot</p>
               </div>
               <div className="bg-white p-4 rounded-lg shadow-sm">
                 <h4 className="font-bold text-gray-900 mb-2">Soft Skills</h4>
-                <p className="text-sm text-gray-600">Resolución de problemas, Trabajo en equipo, Comunicación</p>
+                <p className="text-sm text-gray-600">Resolución de problemas, Trabajo en equipo, Comunicación, Creatividad, Adaptabilidad, proactivo</p>
               </div>
             </div>
             

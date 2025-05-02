@@ -13,13 +13,12 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="max-w-3xl">
-          <p className="text-blue-600 font-medium mb-4">Hola, soy</p>
+          <p className="text-blue-600 font-medium mb-4">Hola, soy <b>Saviel</b></p>
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
             Desarrollador Full-Stack
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Diseño y construyo aplicaciones web modernas utilizando HTML, CSS y JavaScript
-            para crear experiencias digitales excepcionales.
+            Desarrollo Aplicaciones y paginas webs con tecnologias modernas
           </p>
           <div className="flex flex-wrap gap-4">
             <Button
@@ -42,11 +41,15 @@ const Hero = () => {
           <div className="mt-16 flex items-center gap-2">
             <span className="text-gray-500">Tecnologías:</span>
             <div className="flex gap-4 flex-wrap">
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">HTML5</span>
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">CSS3</span>
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">JavaScript</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">HTML, CSS y JS</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">PHP</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Tailwind CSS</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Bootstrap</span>
               <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">React</span>
               <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Node.js</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Express.js</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">laravel</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">MySQL</span>
             </div>
           </div>
         </div>
