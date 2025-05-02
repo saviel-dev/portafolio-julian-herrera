@@ -1,3 +1,7 @@
+# Nota:
+
+//contacto por modificar
+
 # Welcome to your Lovable project
 
 ## Project info

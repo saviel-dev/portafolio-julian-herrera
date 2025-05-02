@@ -25,8 +25,8 @@ const Contact = () => {
     setTimeout(() => {
       console.log("Form submitted:", formData);
       toast({
-        title: "¡Mensaje enviado!",
-        description: "Gracias por contactarme. Te responderé pronto.",
+        title: "¡Mensaje enviado con Exito!",
+        description: "Gracias por contactarme. Te responderé lo mas pronto que pueda.",
       });
 
       // Reset form
@@ -64,7 +64,7 @@ const Contact = () => {
                 </svg>
               </div>
               <h4 className="font-bold text-gray-900 mb-2">Email</h4>
-              <a href="mailto:hello@example.com" className="text-blue-600 hover:underline">
+              <a href="mailto:saviel.dev@gmail.com" className="text-blue-600 hover:underline" target="_blank">
                 saviel.dev@gmail.com
               </a>
             </div>
@@ -104,6 +104,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  placeholder="Juan"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                   required
                 />
@@ -118,6 +119,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  placeholder="correo@gmail.com"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                   required
                 />
@@ -133,6 +135,7 @@ const Contact = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
+                placeholder="Tu mensaje aqui...."
                 rows={5}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 required
