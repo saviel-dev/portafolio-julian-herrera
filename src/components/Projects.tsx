@@ -4,16 +4,16 @@ import ProjectCard from "./ProjectCard";
 const Projects = () => {
   const projects = [
     {
-      title: "E-commerce Web App",
+      title: "Sistema de Gestion de Clientes",
       description:
-        "Una tienda en línea completa con catálogo de productos, carrito de compras, y sistema de pago. Implementada con HTML, CSS y JavaScript puro, con diseño responsive para móviles.",
-      image: "https://images.unsplash.com/photo-1661956602944-249bcd04b63f?q=80&w=2340&auto=format&fit=crop",
-      technologies: ["HTML5", "CSS3", "JavaScript", "LocalStorage API"],
+        "Optimiza la gestión de tus clientes con nuestro sistema dinámico diseñado para pequeños negocios. Construido con PHP, Bootstrap y MySQL, te ayudará a tener un control más eficiente de tus interacciones y datos de clientes.",
+      image: "/src/components/img/project.png",
+      technologies: ["PHP", "Bootstrap 5", "MYSQL"],
       demoLink: "#",
       codeLink: "#",
     },
     {
-      title: "Task Manager App",
+      title: "Adminstrador de Tareas",
       description:
         "Aplicación de gestión de tareas con funcionalidades CRUD, categorización, filtrado y almacenamiento local. Interfaz intuitiva que permite al usuario organizar sus pendientes eficientemente.",
       image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=2148&auto=format&fit=crop",
@@ -22,7 +22,7 @@ const Projects = () => {
       codeLink: "#",
     },
     {
-      title: "Weather Dashboard",
+      title: "Por editar",
       description:
         "Panel meteorológico que consume datos de una API externa para mostrar información del clima actual y pronóstico de 5 días para cualquier ciudad. Incluye gráficos visuales y geolocalización.",
       image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=2340&auto=format&fit=crop",

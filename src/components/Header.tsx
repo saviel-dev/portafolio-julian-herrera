@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header className="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 py-4 shadow-sm">
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold text-gray-800">
+        <a href="#inicio" className="text-xl font-bold text-gray-800">
           <span className="text-blue-600">{'<'}</span>
           Saviel Isculpi
           <span className="text-blue-600">{'/>'}</span>

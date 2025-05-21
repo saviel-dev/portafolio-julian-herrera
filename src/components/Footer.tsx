@@ -38,7 +38,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
           <p className="text-gray-400">
-            © {currentYear} Mi Portafolio. Todos los derechos reservados.
+            © {currentYear} Julian Herrera. Todos los derechos reservados.
           </p>
         </div>
       </div>
