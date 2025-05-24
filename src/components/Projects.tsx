@@ -7,7 +7,7 @@ const Projects = () => {
       title: "Sistema de Gestion de Clientes",
       description:
         "Optimiza la gestión de tus clientes con nuestro sistema dinámico diseñado para pequeños negocios. Construido con PHP, Bootstrap y MySQL, te ayudará a tener un control más eficiente de tus interacciones y datos de clientes.",
-      image: "./src/components/img/clientsManager.png",
+      image: "/img/clientsManager.png",
       technologies: ["PHP", "Bootstrap 5", "MYSQL"],
       codeLink: "https://github.com/saviel-dev/Gestor-de-clientes-sencillo",
     },
@@ -15,7 +15,7 @@ const Projects = () => {
       title: "Adminstrador de Tareas",
       description:
         "Aplicación de gestión de tareas con funcionalidades CRUD, categorización, filtrado y almacenamiento local. Interfaz intuitiva que permite al usuario organizar sus pendientes eficientemente.",
-      image: "./src/components/img/listadoTareas.png",
+      image: "/img/listadoTareas.png",
       technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
       demoLink: "https://listado-tareas-jh.vercel.app/",
       codeLink: "https://github.com/saviel-dev/Listado-de-tareas",
@@ -24,7 +24,7 @@ const Projects = () => {
       title: "E-ecommerce pasarela de pago (Desarrollo en curso)",
       description:
         "E-commerce con funcionalidades de carrito de compras, pagos seguros y gestión de pedidos. Hecho con react con TS, ofrece una experiencia de compra fluida y segura.",
-      image: "./src/components/img/e-ecommerce.png",
+      image: "/img/e-ecommerce.png",
       technologies: ["HTML, CSS, JS", "Tailwind css", "React", "APIs externas", "TS", "API"],
       demoLink: "https://caseritaweb.vercel.app/",
       codeLink: "https://github.com/saviel-dev/Simulador-de-Pasarela-de-pago",
