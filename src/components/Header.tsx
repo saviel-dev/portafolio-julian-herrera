@@ -14,7 +14,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
         <a href="#inicio" className="text-xl font-bold text-gray-800">
           <span className="text-blue-600">{'<'}</span>
-          Saviel Isculpi
+          Julian Herrera
           <span className="text-blue-600">{'/>'}</span>
         </a>
         

@@ -13,7 +13,7 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="max-w-3xl">
-          <p className="text-blue-600 font-medium mb-4">Hola, soy <b>Saviel</b></p>
+          <p className="text-blue-600 font-medium mb-4">Hola, soy <b>Julian</b></p>
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
             Desarrollador Full-Stack
           </h1>
