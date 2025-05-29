@@ -1,15 +1,66 @@
+/* Variables CSS para breakpoints */
+:root {
+  --max-width: 1280px;
+  --padding-large: 2rem;
+  --padding-medium: 1.5rem;
+  --padding-small: 1rem;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--padding-large);
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  #root {
+    padding: var(--padding-medium);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #root {
+    padding: var(--padding-small);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #root {
+    padding: calc(var(--padding-small) / 2);
+  }
 }
 
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: all 300ms ease;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    height: 5em;
+    padding: 1.25em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .logo {
+    height: 3.5em;
+    padding: 0.75em;
+  }
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
@@ -34,9 +85,42 @@
 }
 
 .card {
-  padding: 2em;
+  padding: var(--padding-large);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  transition: all 300ms ease;
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    max-width: 450px;
+    padding: var(--padding-medium);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 400px;
+    padding: var(--padding-small);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    max-width: 100%;
+    padding: calc(var(--padding-small) / 2);
+  }
 }
 
 .read-the-docs {
   color: #888;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+  .read-the-docs {
+    font-size: 0.875rem;
+  }
 }
