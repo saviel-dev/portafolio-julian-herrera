@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <a href="#" className="text-xl font-bold">
               <span className="text-blue-400">{'<'}</span>
-              Saviel Isculpi
+              Julian Herrera
               <span className="text-blue-400">{'/>'}</span>
             </a>
             <p className="mt-2 text-gray-400 text-sm">
