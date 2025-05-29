@@ -76,7 +76,7 @@ const Contact = () => {
                 </svg>
               </div>
               <h4 className="font-bold text-gray-900 mb-2">Ubicación</h4>
-              <p className="text-gray-600">Estado Miranda, Venezuela</p>
+              <p className="text-gray-600">Ocumare del Tuy, Estado Miranda, Venezuela</p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">

@@ -1,12 +1,18 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { motion } from 'framer-motion';
+
+interface Technology {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
 
 interface ProjectCardProps {
   title: string;
   description: string;
   image: string;
-  technologies: string[];
+  technologies: Technology[];
   demoLink?: string;
   codeLink?: string;
   reversed?: boolean;
@@ -26,27 +32,75 @@ const ProjectCard = ({
       "flex flex-col lg:flex-row gap-8 items-center",
       reversed && "lg:flex-row-reverse"
     )}>
-      <div className="w-full lg:w-1/2 h-80 md:h-96 overflow-hidden rounded-lg shadow-md relative group">
+      <motion.div 
+        className="w-full lg:w-1/2 h-80 md:h-96 overflow-hidden rounded-lg shadow-md relative group"
+        initial={{ opacity: 0, x: reversed ? 50 : -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="absolute inset-0 bg-blue-600 mix-blend-multiply opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-        <div 
+        <motion.div 
           className="w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
           style={{ backgroundImage: `url(${image})` }}
-        ></div>
-      </div>
+          initial={{ scale: 1.2 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        ></motion.div>
+      </motion.div>
 
-      <div className="w-full lg:w-1/2">
-        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+      <motion.div 
+        className="w-full lg:w-1/2"
+        initial={{ opacity: 0, x: reversed ? -50 : 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <motion.h3 
+          className="text-2xl md:text-3xl font-bold text-gray-900 mb-3"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >{title}</motion.h3>
+        <motion.p 
+          className="text-gray-600 mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >{description}</motion.p>
         
-        <div className="mb-6 flex flex-wrap gap-2">
+        <motion.div 
+          className="mb-6 flex flex-wrap gap-2 sm:gap-3"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
           {technologies.map((tech, index) => (
-            <span key={index} className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">
-              {tech}
-            </span>
+            <motion.span 
+              key={index} 
+              className="px-3 py-1.5 bg-gray-100 rounded-full text-xs sm:text-sm text-gray-700 whitespace-nowrap flex items-center gap-1.5"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.6 + (index * 0.1) }}
+            >
+              <tech.icon className="w-4 h-4" />
+              {tech.name}
+            </motion.span>
           ))}
-        </div>
+        </motion.div>
         
-        <div className="flex flex-wrap gap-4">
+        <motion.div 
+          className="flex flex-wrap gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+        >
           {demoLink && (
             <Button
               className="bg-blue-600 hover:bg-blue-700"
@@ -70,8 +124,8 @@ const ProjectCard = ({
               </svg>
             </Button>
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
