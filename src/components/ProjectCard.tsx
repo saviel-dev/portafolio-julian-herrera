@@ -41,8 +41,12 @@ const ProjectCard = ({
       >
         <div className="absolute inset-0 bg-blue-600 mix-blend-multiply opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
         <motion.div 
-          className="w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
-          style={{ backgroundImage: `url(${image})` }}
+          className="w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700 ease-out object-contain"
+          style={{ 
+            backgroundImage: `url(${image})`, 
+            backgroundSize: image.includes('e-ecommerce.png') ? 'contain' : 'cover',
+            backgroundRepeat: 'no-repeat'
+          }}
           initial={{ scale: 1.2 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}

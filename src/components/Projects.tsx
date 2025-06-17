@@ -1,7 +1,7 @@
 
 import ProjectCard from "./ProjectCard";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaGithub } from 'react-icons/fa';
-import { SiTypescript, SiTailwindcss, SiMysql } from 'react-icons/si';
+import { SiTypescript, SiTailwindcss, SiMysql, SiMongodb } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const Projects = () => {
@@ -18,8 +18,9 @@ const Projects = () => {
         { name: "Tailwind CSS", icon: SiTailwindcss },
         { name: "React", icon: FaReact },
         { name: "TypeScript", icon: SiTypescript },
+        { name: "MongoDB", icon: SiMongodb },
       ],
-      demoLink: "https://caseritaweb.vercel.app/",
+      demoLink: "https://micaserita.com.pe/",
       codeLink: "https://github.com/saviel-dev/Simulador-de-Pasarela-de-pago",
     },
     {

@@ -131,3 +131,58 @@
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+/* Animaciones optimizadas para evitar cambios de layout */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-fade-in-delay-200 {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out 0.2s;
+}
+
+.animate-fade-in-delay-400 {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out 0.4s;
+}
+
+.animate-fade-in-delay-600 {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out 0.6s;
+}
+
+.animate-fade-in-delay-800 {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out 0.8s;
+}
+
+.animate-fade-in-delay-1000 {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out 1s;
+}
+
+.animate-fade-in-delay-1200 {
+  opacity: 1 !important;
+  animation: fadeIn 0.5s ease-out 1.2s forwards;
+}
+
+/* Asegurar que el contenido ocupe el espacio correcto desde el inicio */
+section, div {
+  box-sizing: border-box;
+}
+
+/* Prevenir overflow horizontal en móviles */
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
