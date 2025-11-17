@@ -13,7 +13,7 @@ const experiences: ExperienceItem[] = [
   {
     cargo: "Desarrollador Full-Stack",
     empresa: "NxLabs",
-    año: "122023 - 092024",
+    año: "2023 - 2024",
     estado: "Finalizado",
     responsabilidades: [
       "Colaboración en el desarrollo de aplicaciones web y plataformas de e-commerce",
@@ -24,7 +24,7 @@ const experiences: ExperienceItem[] = [
   {
     cargo: "Pasante Informático",
     empresa: "Ferretería Santa Elena",
-    año: "052025 - 082025",
+    año: "2025 - 2025",
     estado: "Finalizado",
     responsabilidades: [
       "Administración, contaduría e informática",
@@ -36,7 +36,7 @@ const experiences: ExperienceItem[] = [
   {
     cargo: "Programador Full Stack Freelancer",
     empresa: "Independiente",
-    año: "092024 - Actualmente",
+    año: "2024 - Actualmente",
     estado: "Actualmente",
     responsabilidades: [
       "Especialista en desarrollo de landing pages y e-commerce",
