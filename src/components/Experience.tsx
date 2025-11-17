@@ -2,41 +2,47 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 interface ExperienceItem {
-  period: string;
-  title: string;
-  company: string;
-  description: string[];
+  cargo: string;
+  empresa: string;
+  año: string;
+  estado: string;
+  responsabilidades: string[];
 }
 
 const experiences: ExperienceItem[] = [
   {
-    period: "Actualmente",
-    title: "Desarrollador Full-Stack",
-    company: "NxLabs",
-    description: [
+    cargo: "Desarrollador Full-Stack",
+    empresa: "NxLabs",
+    año: "122023 - 092024",
+    estado: "Finalizado",
+    responsabilidades: [
       "Colaboración en el desarrollo de aplicaciones web y plataformas de e-commerce",
       "Participación activa en proyectos de gran escala",
-      "Integración de sistema POS"
+      "Integración de sistema POS, enfocado en PHP y Laravel"
     ]
   },
   {
-    period: "2024",
-    title: "Pasante",
-    company: "Ferretería Santa Elena",
-    description: [
-      "Gestión de contabilidad, ventas, administración y seguridad informática",
-      "Implementación de compras a crédito por Cashea",
-      "Parametrización entre Profit Plus y el banco BNC",
-      "Desarrollo de aplicación de escritorio en Python para gestión de cuentas por cobrar offline"
+    cargo: "Pasante Informático",
+    empresa: "Ferretería Santa Elena",
+    año: "052025 - 082025",
+    estado: "Finalizado",
+    responsabilidades: [
+      "Administración, contaduría e informática",
+      "Gestión de cuentas por cobrar y seguridad informática",
+      "Implementación de inteligencia artificial y OneDrive para procesos",
+      "Desarrollo de aplicación de escritorio offline para área contable"
     ]
   },
   {
-    period: "Freelance",
-    title: "Desarrollador Independiente",
-    company: "",
-    description: [
-      "Desarrollo de páginas web personalizadas",
-      "Creación de aplicaciones de escritorio usando Electron"
+    cargo: "Programador Full Stack Freelancer",
+    empresa: "Independiente",
+    año: "092024 - Actualmente",
+    estado: "Actualmente",
+    responsabilidades: [
+      "Especialista en desarrollo de landing pages y e-commerce",
+      "Software a medida y automatizaciones con n8n",
+      "Desarrollo en Rust: bots para Discord y módulos blockchain (NFTs, contratos inteligentes, scripts básicos para wallets)",
+      "Soluciones personalizadas para potenciar negocios digitales"
     ]
   }
 ];
@@ -79,15 +85,22 @@ const Experience = () => {
                 transition={{ duration: 0.3, delay: index * 0.2 + 0.2 }}
               ></motion.div>
               <div className="space-y-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-medium">{exp.title}</h3>
-                  <span className="text-sm text-gray-500">{exp.period}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                  <div>
+                    <h3 className="text-lg font-medium">{exp.cargo}</h3>
+                    <p className="text-gray-600 text-sm">{exp.empresa}</p>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-sm text-gray-500">{exp.año}</span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${
+                      exp.estado === 'Actualmente' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                    }`}>
+                      {exp.estado}
+                    </span>
+                  </div>
                 </div>
-                {exp.company && (
-                  <p className="text-gray-600 text-sm">{exp.company}</p>
-                )}
-                <ul className="mt-2 space-y-1 text-sm text-gray-600">
-                  {exp.description.map((item, idx) => (
+                <ul className="mt-3 space-y-1.5 text-sm text-gray-600">
+                  {exp.responsabilidades.map((item, idx) => (
                     <motion.li
                       key={idx}
                       className="leading-relaxed"

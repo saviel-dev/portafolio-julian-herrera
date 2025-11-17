@@ -1,11 +1,50 @@
 
 import ProjectCard from "./ProjectCard";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaGithub } from 'react-icons/fa';
-import { SiTypescript, SiTailwindcss, SiMysql, SiMongodb } from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaGithub, FaLaravel, FaNodeJs, FaBolt, FaCode } from 'react-icons/fa';
+import { SiTypescript, SiTailwindcss, SiMysql, SiMongodb, SiWebrtc, SiLaravel } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const Projects = () => {
   const projects = [
+    {
+      title: "Plataforma Integral de Gestión de Campañas WhatsApp",
+      description: "Sistema avanzado en Laravel y Node.js para crear, enviar y monitorear campañas masivas de WhatsApp con análisis en tiempo real y gestión automatizada de respuestas.",
+      image: "/img/proyecto.png",
+      technologies: [
+        { name: "Laravel", icon: SiLaravel },
+        { name: "Node.js", icon: FaNodeJs },
+        { name: "Livewire", icon: FaBolt },
+        { name: "Tailwind CSS", icon: SiTailwindcss },
+        { name: "WebSocket", icon: SiWebrtc },
+      ],
+      codeLink: "https://github.com/saviel-dev/laravel-whatsapp-saas",
+    },
+    {
+      title: "Sistema Administrativo de Inventario Nazca",
+      description: "Gestión eficiente de inventario con funcionalidades rápidas, exportación PDF/CSV, control por sede, alertas y registro detallado de movimientos.",
+      image: "/img/proyecto.png",
+      technologies: [
+        { name: "PHP", icon: FaPhp },
+        { name: "MySQL", icon: SiMysql },
+        { name: "JavaScript", icon: FaJs },
+        { name: "CSS/SCSS", icon: FaCss3Alt },
+        { name: "HTML5", icon: FaHtml5 },
+      ],
+      codeLink: "https://github.com/saviel-dev/App-Web-Nazca",
+    },
+    {
+      title: "Página Web - Kalhua Café",
+      description: "Página web para un emprendimiento de cafetería en Venezuela, especializado en marquesas y próximamente café. Desarrollado con tecnologías modernas y diseño responsivo.",
+      image: "/img/kalhua cafe.png",
+      technologies: [
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "React", icon: FaReact },
+        { name: "shadcn/ui", icon: FaCode, className: "text-foreground" },
+        { name: "Tailwind CSS", icon: SiTailwindcss },
+      ],
+      demoLink: "https://kalhua-web.vercel.app/",
+      codeLink: "https://github.com/saviel-dev/kalhua-rustica-digital",
+    },
     {
       title: "E-ecommerce con pasarela de pago",
       description:
@@ -98,30 +137,22 @@ const Projects = () => {
         </motion.div>
 
         <motion.div 
-          className="flex flex-col gap-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           {projects.map((project, index) => (
-            <motion.div
+            <ProjectCard
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 * (index + 1) }}
-            >
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                image={project.image}
-                technologies={project.technologies}
-                demoLink={project.demoLink}
-                codeLink={project.codeLink}
-                reversed={index % 2 !== 0}
-              />
-            </motion.div>
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              technologies={project.technologies}
+              demoLink={project.demoLink}
+              codeLink={project.codeLink}
+            />
           ))}
         </motion.div>
       </div>

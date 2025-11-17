@@ -120,7 +120,7 @@ const About = () => {
                 transition={{ duration: 0.4, delay: 1.1 }}
               >
                 <h4 className="font-bold text-gray-900 mb-2">Backend</h4>
-                <p className="text-sm text-gray-600">Node.js, Express.js, Laravel, Bases de datos</p>
+                <p className="text-sm text-gray-600">Node.js, Express.js, Laravel, Rust, Bases de datos</p>
               </motion.div>
               <motion.div 
                 className="bg-white p-4 rounded-lg shadow-sm"

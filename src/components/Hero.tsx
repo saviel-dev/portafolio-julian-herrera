@@ -1,8 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaNodeJs, FaLaravel, FaDownload } from 'react-icons/fa';
-import { SiTailwindcss, SiMysql, SiExpress, SiDotnet } from 'react-icons/si';
-import { TbBrandCSharp } from 'react-icons/tb';
+import { SiTailwindcss, SiMysql, SiExpress, SiRust } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
@@ -104,16 +103,8 @@ const Hero = () => {
                 MySQL
               </span>
               <span className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 transition-colors rounded-full text-sm text-gray-700 flex items-center gap-1.5">
-                <TbBrandCSharp className="w-4 h-4 text-[#239120]" />
-                C#
-              </span>
-              <span className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 transition-colors rounded-full text-sm text-gray-700 flex items-center gap-1.5">
-                <SiDotnet className="w-4 h-4 text-[#512BD4]" />
-                .NET
-              </span>
-              <span className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 transition-colors rounded-full text-sm text-gray-700 flex items-center gap-1.5">
-                <SiDotnet className="w-4 h-4 text-[#512BD4]" />
-                ASP.NET
+                <SiRust className="w-4 h-4 text-[#000000]" />
+                Rust
               </span>
             </div>
           </div>
