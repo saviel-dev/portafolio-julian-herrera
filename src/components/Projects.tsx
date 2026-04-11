@@ -1,4 +1,3 @@
-
 import ProjectCard from "./ProjectCard";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaGithub, FaLaravel, FaNodeJs, FaBolt, FaCode } from 'react-icons/fa';
 import { SiTypescript, SiTailwindcss, SiMysql, SiMongodb, SiWebrtc, SiLaravel } from 'react-icons/si';
@@ -90,54 +89,45 @@ const Projects = () => {
   ];
 
   return (
-    <motion.section 
-      id="proyectos" 
-      className="py-20"
+    <motion.section
+      id="proyectos"
+      className="py-24 bg-gray-50/60"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-4 md:px-8">
-        <motion.div 
-          className="text-center mb-16"
+      <div className="container mx-auto px-4 md:px-10 max-w-4xl">
+        <motion.div
+          className="mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <motion.h2 
-            className="text-sm uppercase tracking-wider text-blue-600 font-medium mb-2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            Mi Trabajo
-          </motion.h2>
-          <motion.h3 
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+          <motion.h3
+            className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Proyectos Destacados
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-blue-600 text-white text-base font-mono">&lt;/&gt;</span>
+            Proyectos
           </motion.h3>
-          <motion.p 
-            className="text-gray-600 max-w-2xl mx-auto"
+          <motion.p
+            className="text-gray-600 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Una muestra de mis proyectos recientes implementados con HTML, CSS y JavaScript.
-            Cada proyecto demuestra diferentes habilidades y soluciones a problemas específicos.
+            Una muestra de mis proyectos recientes. Cada uno demuestra diferentes habilidades y soluciones a problemas reales.
           </motion.p>
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        <motion.div
+          className="flex flex-col gap-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -146,6 +136,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <ProjectCard
               key={index}
+              index={index}
               title={project.title}
               description={project.description}
               image={project.image}

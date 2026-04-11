@@ -3,7 +3,7 @@ import { useState, FormEvent, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaMapMarkerAlt, FaEnvelope, FaGithub, FaGlobe } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaGithub, FaGlobe } from "react-icons/fa";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -22,32 +22,32 @@ const Contact = () => {
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'El nombre es requerido';
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'El correo electrónico es requerido';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Por favor ingresa un correo electrónico válido';
     }
-    
+
     if (!formData.message.trim()) {
       newErrors.message = 'El mensaje es requerido';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setIsSubmitting(true);
 
     try {
@@ -80,7 +80,7 @@ const Contact = () => {
         message: "",
       });
       setErrors({});
-      
+
     } catch (error) {
       console.error('Error:', error);
       toast({
@@ -121,13 +121,13 @@ const Contact = () => {
 
   const buttonVariants = {
     initial: { scale: 1 },
-    hover: { 
+    hover: {
       scale: 1.02,
-      transition: { 
+      transition: {
         type: 'spring',
         stiffness: 400,
-        damping: 15 
-      } 
+        damping: 15
+      }
     },
     tap: { scale: 0.98 },
   };
@@ -135,23 +135,14 @@ const Contact = () => {
   return (
     <section id="contacto" className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <motion.span 
-            className="inline-block text-sm uppercase tracking-wider text-blue-600 font-medium mb-3 px-4 py-1.5 bg-blue-50 rounded-full"
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            Contacto
-          </motion.span>
-          <motion.h2 
+          <motion.h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600 w-full max-w-4xl mx-auto px-4"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -160,7 +151,7 @@ const Contact = () => {
           >
             ¿Tienes un proyecto en mente?
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-lg text-gray-600 max-w-2xl mx-auto"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -171,18 +162,18 @@ const Contact = () => {
           </motion.p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.div 
+          <motion.div
             className="space-y-8"
             variants={itemVariants}
           >
-            <motion.div 
+            <motion.div
               className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
               whileHover={{ y: -5 }}
             >
@@ -192,8 +183,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Correo electrónico</h3>
-                  <a 
-                    href="mailto:saviel.dev@gmail.com" 
+                  <a
+                    href="mailto:saviel.dev@gmail.com"
                     className="text-blue-600 hover:underline break-all"
                   >
                     saviel.dev@gmail.com
@@ -202,22 +193,8 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.div 
-              className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
-              whileHover={{ y: -5 }}
-            >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                  <FaMapMarkerAlt className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Ubicación</h3>
-                  <p className="text-gray-600">Ocumare del Tuy, Estado Miranda, Venezuela</p>
-                </div>
-              </div>
-            </motion.div>
 
-            <motion.div 
+            <motion.div
               className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
               whileHover={{ y: -5 }}
             >
@@ -227,8 +204,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">LinkedIn</h3>
-                  <a 
-                    href="https://www.linkedin.com/in/saviel-julian-isculpi-herrera-102818346/" 
+                  <a
+                    href="https://www.linkedin.com/in/saviel-julian-isculpi-herrera-102818346/"
                     className="text-blue-600 hover:underline break-all"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -239,7 +216,7 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
               whileHover={{ y: -5 }}
             >
@@ -249,8 +226,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">GitHub</h3>
-                  <a 
-                    href="https://github.com/saviel-dev/" 
+                  <a
+                    href="https://github.com/saviel-dev/"
                     className="text-blue-600 hover:underline break-all"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -261,32 +238,11 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.div 
-              className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
-              whileHover={{ y: -5 }}
-            >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                  <FaGlobe className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Portafolio Freelance</h3>
-                  <a 
-                    href="https://julianherrera.vercel.app/" 
-                    className="text-blue-600 hover:underline break-all"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    julianherrera.vercel.app
-                  </a>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
-          <motion.form 
+          <motion.form
             ref={formRef}
-            onSubmit={handleSubmit} 
+            onSubmit={handleSubmit}
             className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100"
             variants={itemVariants}
           >
