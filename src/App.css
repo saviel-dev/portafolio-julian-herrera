@@ -7,30 +7,9 @@
 }
 
 #root {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--padding-large);
-  text-align: center;
   width: 100%;
   box-sizing: border-box;
-}
-
-@media screen and (max-width: 1024px) {
-  #root {
-    padding: var(--padding-medium);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  #root {
-    padding: var(--padding-small);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  #root {
-    padding: calc(var(--padding-small) / 2);
-  }
+  overflow-x: hidden;
 }
 
 .logo {

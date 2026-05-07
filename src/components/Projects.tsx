@@ -138,9 +138,9 @@ const Projects = () => {
             </motion.p>
           </div>
 
-          {/* Toggle buttons */}
+          {/* Toggle buttons - hidden on mobile */}
           <motion.div
-             className="flex items-center gap-1 bg-white rounded-xl p-1.5 shadow-sm border border-gray-200 self-start md:self-auto shrink-0"
+             className="hidden sm:flex items-center gap-1 bg-white rounded-xl p-1.5 shadow-sm border border-gray-200 self-start md:self-auto shrink-0"
              initial={{ opacity: 0, x: 20 }}
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}

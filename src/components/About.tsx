@@ -24,9 +24,9 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative">
+            <div className="relative overflow-hidden sm:overflow-visible pr-4 pb-4">
               <motion.div
-                className="w-full h-80 md:h-96 bg-blue-600 rounded-lg relative z-10 overflow-hidden"
+                className="w-full h-52 sm:h-72 md:h-96 bg-blue-600 rounded-lg relative z-10 overflow-hidden"
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -35,7 +35,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600"></div>
                 <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiPjwvcmVjdD4KPC9zdmc+')]"></div>
                 <motion.div
-                  className="absolute inset-0 flex items-center justify-center text-white font-bold text-6xl"
+                  className="absolute inset-0 flex items-center justify-center text-white font-bold text-4xl sm:text-6xl"
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -45,7 +45,7 @@ const About = () => {
                 </motion.div>
               </motion.div>
               <motion.div
-                className="absolute -bottom-4 -right-4 w-full h-80 md:h-96 border-2 border-gray-900 rounded-lg"
+                className="hidden sm:block absolute -bottom-4 -right-4 w-full h-72 md:h-96 border-2 border-gray-900 rounded-lg"
                 initial={{ opacity: 0, x: 20, y: 20 }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true }}
