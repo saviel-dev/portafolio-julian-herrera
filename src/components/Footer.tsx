@@ -1,5 +1,8 @@
 
+import { useLanguage } from '@/context/LanguageContext';
+
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -13,7 +16,7 @@ const Footer = () => {
               <span className="text-blue-400">{'/>'}</span>
             </a>
             <p className="mt-2 text-gray-400 text-sm">
-              Construyendo experiencias web excepcionales.
+              {t.footer.tagline}
             </p>
           </div>
 
@@ -38,7 +41,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
           <p className="text-gray-400">
-            © {currentYear} Julian Herrera. Todos los derechos reservados.
+            © {currentYear} Julian Herrera. {t.footer.rights}
           </p>
         </div>
       </div>

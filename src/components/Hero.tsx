@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaNodeJs, FaDownload, FaPython, FaJava, FaLinkedin, FaCode } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaNodeJs, FaDownload, FaPython, FaJava, FaCode } from 'react-icons/fa';
 import { SiTailwindcss, SiMysql, SiN8N, SiPostman, SiPostgresql, SiDocker, SiSupabase } from 'react-icons/si';
 import { useEffect, useState } from "react";
+import { useLanguage } from '@/context/LanguageContext';
 
 const technologies = [
   { name: 'HTML | CSS | JS', icon: <div className="flex -space-x-1 mr-1"><FaHtml5 className="w-4 h-4 text-[#E34F26] relative z-30" /><FaCss3Alt className="w-4 h-4 text-[#1572B6] relative z-20" /><FaJs className="w-4 h-4 text-[#F7DF1E] relative z-10" /></div> },
@@ -21,30 +21,28 @@ const technologies = [
 ];
 
 const Hero = () => {
+  const { t, language } = useLanguage();
   const [typedText, setTypedText] = useState("");
-  const [hasAnimated, setHasAnimated] = useState(false); // Track if animation has already run
-  const fullText = "Desarrollador Full-Stack";
+  const [animatedTitle, setAnimatedTitle] = useState("");
 
+  // Re-run typing animation whenever the title changes (language switch)
   useEffect(() => {
-    if (!hasAnimated) {
-      let index = 0;
-      const typingSpeed = 75;
-      
-      const typingInterval = setInterval(() => {
-        if (index < fullText.length) {
-          setTypedText(fullText.substring(0, index + 1));
-          index++;
-        } else {
-          clearInterval(typingInterval);
-          setHasAnimated(true);
-        }
-      }, typingSpeed);
+    setTypedText("");
+    let index = 0;
+    const fullText = t.hero.title;
+    const typingSpeed = 70;
 
-      return () => {
+    const typingInterval = setInterval(() => {
+      if (index < fullText.length) {
+        setTypedText(fullText.substring(0, index + 1));
+        index++;
+      } else {
         clearInterval(typingInterval);
-      };
-    }
-  }, [hasAnimated]); // Dependency array includes hasAnimated
+      }
+    }, typingSpeed);
+
+    return () => clearInterval(typingInterval);
+  }, [t.hero.title]);
 
   return (
     <section
@@ -61,33 +59,44 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="max-w-3xl">
           <p className="text-blue-600 font-semibold mb-3 animate-fade-in tracking-wide text-sm uppercase">
-            Hola, soy <b className="font-bold">Julian</b> 👋
+            {t.hero.greeting}
           </p>
           <h1 className="text-5xl md:text-5xl font-extrabold text-gray-900 mb-5 animate-fade-in-delay-200 leading-tight tracking-tight">
             {typedText}<span className="animate-pulse text-blue-500">|</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-500 mb-10 animate-fade-in-delay-400 leading-relaxed max-w-2xl">
-            Desarrollador web junior enfocado en frontend, con habilidades para backend, creando productos funcionales y mejorando rendimiento y experiencia de usuario.
+            {t.hero.description}
           </p>
           <div className="flex flex-wrap gap-3 animate-fade-in-delay-600">
             <button
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 active:scale-95 transition-all duration-200 shadow-md shadow-blue-200"
+              className="project-button"
               onClick={() => document.getElementById('proyectos')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <FaCode className="w-4 h-4" />
-              Ver proyectos
+              <span className="project-button_lg">
+                <span className="project-button_sl"></span>
+                <span className="project-button_text">
+                  <FaCode className="w-4 h-4" />
+                  {t.hero.verProyectos}
+                </span>
+              </span>
             </button>
-            <button
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-blue-600 text-blue-600 font-semibold text-sm hover:bg-blue-50 active:scale-95 transition-all duration-200"
-              onClick={() => window.open('https://www.linkedin.com/in/saviel-julian-isculpi-herrera-102818346/', '_blank')}
+            <a
+              href={`/documents/CV%20-%20Juli%C3%A1n%20Herrera%20(${language === 'EN' ? 'En' : 'Es'}).pdf`}
+              download={`CV - Julián Herrera (${language === 'EN' ? 'En' : 'Es'}).pdf`}
+              className="cv-button"
             >
-              <FaLinkedin className="w-4 h-4" />
-              LinkedIn
-            </button>
+              <span className="cv-button_lg">
+                <span className="cv-button_sl"></span>
+                <span className="cv-button_text">
+                  <FaDownload className="w-4 h-4" />
+                  {t.hero.descargarCV}
+                </span>
+              </span>
+            </a>
           </div>
 
           <div className="mt-16 animate-fade-in-delay-800">
-            <span className="text-gray-500 block mb-4">Tecnologías:</span>
+            <span className="text-gray-500 block mb-4">{t.hero.tecnologias}</span>
             <div className="flex gap-3 flex-wrap">
               {technologies.map((tech, idx) => (
                 <span

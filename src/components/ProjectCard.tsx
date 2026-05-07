@@ -1,6 +1,21 @@
 
 import { motion } from 'framer-motion';
 import { FaGithub } from 'react-icons/fa';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Maximize2, X } from 'lucide-react';
 
 interface Technology {
   name: string;
@@ -11,11 +26,12 @@ interface Technology {
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: string;
+  image: string | string[];
   technologies: Technology[];
   demoLink?: string;
   codeLink?: string;
   index?: number;
+  viewMode?: 'lista' | 'cards';
 }
 
 const ProjectCard = ({
@@ -26,30 +42,120 @@ const ProjectCard = ({
   demoLink,
   codeLink,
   index = 0,
+  viewMode = 'lista',
 }: ProjectCardProps) => {
+  const isGrid = viewMode === 'cards';
+
   return (
     <motion.div
-      className="flex flex-col md:flex-row gap-6 md:gap-10 items-center bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 overflow-hidden p-4 md:p-6"
+      className={`flex flex-col ${isGrid ? '' : 'md:flex-row'} gap-6 md:gap-10 items-center bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 overflow-hidden p-4 md:p-6 h-full`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      {/* Image */}
-      <motion.div
-        className="w-full md:w-[380px] shrink-0 rounded-xl overflow-hidden border border-gray-200 shadow-sm"
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.3 }}
-      >
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-52 md:h-56 object-cover"
-        />
-      </motion.div>
+      {/* Image / Carousel */}
+      <div className={`w-full ${isGrid ? '' : 'md:w-[380px]'} shrink-0 relative group`}>
+        {Array.isArray(image) ? (
+          <Carousel className="w-full">
+            <Dialog>
+              <DialogTrigger asChild>
+                <motion.div
+                  className="w-full rounded-xl overflow-hidden border-2 border-blue-600 shadow-sm cursor-pointer relative"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <Maximize2 className="w-6 h-6" />
+                    </div>
+                  </div>
+
+                  <CarouselContent>
+                    {image.map((img, i) => (
+                      <CarouselItem key={i}>
+                        <img
+                          src={img}
+                          alt={`${title} - image ${i + 1}`}
+                          className="w-full h-52 md:h-56 object-cover bg-gray-100"
+                        />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </motion.div>
+              </DialogTrigger>
+              <DialogContent className="max-w-[95vw] md:max-w-5xl p-0 overflow-visible bg-transparent border-none shadow-none [&>button:last-child]:hidden">
+                <DialogTitle className="sr-only">Ver imagen de {title}</DialogTitle>
+                <div className="relative w-full h-full flex items-center justify-center p-4">
+                  <DialogClose className="absolute -top-12 -right-4 md:-right-12 p-2 text-white/70 hover:text-white transition-colors">
+                    <X className="w-8 h-8" />
+                    <span className="sr-only">Cerrar</span>
+                  </DialogClose>
+                  
+                  <Carousel className="w-full h-full">
+                    <CarouselContent>
+                      {image.map((img, i) => (
+                        <CarouselItem key={i} className="flex items-center justify-center">
+                          <img
+                            src={img}
+                            alt={`${title} - full image ${i + 1}`}
+                            className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+                          />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="-left-4 md:-left-16 bg-white/10 hover:bg-white/30 text-white border-white/20 p-2 h-10 w-10 md:h-12 md:w-12" />
+                    <CarouselNext className="-right-4 md:-right-16 bg-white/10 hover:bg-white/30 text-white border-white/20 p-2 h-10 w-10 md:h-12 md:w-12" />
+                  </Carousel>
+                </div>
+              </DialogContent>
+            </Dialog>
+            {/* Carousel Controls OUTSIDE DialogTrigger */}
+            <div className="absolute inset-x-0 bottom-4 flex items-center justify-center gap-2 z-20 pointer-events-none">
+              <CarouselPrevious className="static translate-y-0 pointer-events-auto h-7 w-7 bg-white/80 hover:bg-white" />
+              <CarouselNext className="static translate-y-0 pointer-events-auto h-7 w-7 bg-white/80 hover:bg-white" />
+            </div>
+          </Carousel>
+        ) : (
+          <Dialog>
+            <DialogTrigger asChild>
+              <motion.div
+                className="w-full rounded-xl overflow-hidden border-2 border-blue-600 shadow-sm cursor-pointer relative"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center pointer-events-none">
+                  <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <Maximize2 className="w-6 h-6" />
+                  </div>
+                </div>
+                <img
+                  src={image}
+                  alt={title}
+                  className="w-full h-52 md:h-56 object-cover bg-gray-100"
+                />
+              </motion.div>
+            </DialogTrigger>
+            <DialogContent className="max-w-[95vw] md:max-w-5xl p-0 overflow-visible bg-transparent border-none shadow-none [&>button:last-child]:hidden">
+              <DialogTitle className="sr-only">Ver imagen de {title}</DialogTitle>
+              <div className="relative w-full h-full flex items-center justify-center p-4">
+                <DialogClose className="absolute -top-12 -right-4 md:-right-12 p-2 text-white/70 hover:text-white transition-colors">
+                  <X className="w-8 h-8" />
+                  <span className="sr-only">Cerrar</span>
+                </DialogClose>
+                <img
+                  src={image}
+                  alt={`${title} - full view`}
+                  className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
+        )}
+      </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col gap-4">
+      <div className="flex-1 flex flex-col gap-4 w-full">
         {/* Title */}
         <h3 className="text-xl md:text-2xl font-bold text-gray-900 leading-snug">
           {title}

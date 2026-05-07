@@ -1,18 +1,20 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-
-const navLinks = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#experience', label: 'Experiencia' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#contacto', label: 'Contacto' },
-];
+import { Globe } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
+
+  const navLinks = [
+    { href: '#inicio', label: t.nav.inicio },
+    { href: '#sobre-mi', label: t.nav.sobreMi },
+    { href: '#experience', label: t.nav.experiencia },
+    { href: '#proyectos', label: t.nav.proyectos },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -45,11 +47,11 @@ const Header = () => {
         >
           {isMenuOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+              <path d="M18 6 6 18" /><path d="m6 6 12 12" />
             </svg>
           ) : (
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+              <line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" />
             </svg>
           )}
         </button>
@@ -70,8 +72,18 @@ const Header = () => {
             href="#contacto"
             className="ml-3 px-4 py-2 text-sm font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
           >
-            Contáctame
+            {t.nav.contactame}
           </a>
+          
+          {/* Language Switcher */}
+          <button
+            onClick={toggleLanguage}
+            className="ml-2 p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all flex items-center gap-1.5 text-sm font-medium border border-transparent hover:border-blue-100"
+            aria-label="Change language"
+          >
+            <Globe className="w-4 h-4" />
+            <span className="min-w-[20px]">{language}</span>
+          </button>
         </nav>
       </div>
 
@@ -98,8 +110,16 @@ const Header = () => {
             className="mt-2 px-3 py-2.5 text-sm font-semibold text-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            Contáctame
+            {t.nav.contactame}
           </a>
+          
+          <button
+            onClick={toggleLanguage}
+            className="mt-1 px-3 py-2.5 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all flex items-center justify-center gap-2"
+          >
+            <Globe className="w-4 h-4" />
+            {t.nav.idioma}: {language === 'ES' ? 'Español' : 'English'}
+          </button>
         </nav>
       </div>
     </header>

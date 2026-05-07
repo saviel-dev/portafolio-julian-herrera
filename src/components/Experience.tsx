@@ -1,57 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-interface ExperienceItem {
-  cargo: string;
-  empresa: string;
-  año: string;
-  estado: string;
-  descripcion: string;
-  logro?: string;
-  link?: string;
-}
-
-const experiences: ExperienceItem[] = [
-  {
-    cargo: "Freelancer",
-    empresa: "Independiente",
-    año: "2024 - Actualmente",
-    estado: "Actualmente",
-    descripcion: "Me desempeño de forma independiente ofreciendo edición de video para contenido digital y redes sociales, además de diseño de flyers y material gráfico para marcas y emprendimientos. También desarrollo páginas web modernas, landing pages y tiendas en línea, así como aplicaciones web con funcionalidades personalizadas según las necesidades de cada cliente."
-  },
-  {
-    cargo: "Desarrollador Full Stack",
-    empresa: "Tiunet-Web, C.A",
-    año: "2025 - 2026",
-    estado: "Finalizado",
-    descripcion: "Desarrollé páginas y aplicaciones web personalizadas, incluyendo un sistema de autolavado con gestión de roles, inventario y POS, además de una plataforma para certificación de carnets. Me destaqué por aprender de forma autónoma y mejorar soluciones existentes.",
-    logro: "Optimización de procesos operativos y reducción significativa de tareas repetitivas dentro de la organización mediante la automatización."
-  },
-  {
-    cargo: "Desarrollador Full Stack Colaborador",
-    empresa: "NxLabs.io",
-    año: "2023 - 2025",
-    estado: "Finalizado",
-    descripcion: "Colaboré en el desarrollo de aplicaciones web y plataformas de e-commerce, así como en la integración de sistemas POS a gran escala.",
-    logro: "Implementación de automatizaciones avanzadas en Excel con macros para el procesamiento y consolidación de datos, logrando la creación de reportes dinámicos con tablas y gráficos.",
-    link: "https://nxlabs.io"
-  },
-  {
-    cargo: "Pasante de Informática",
-    empresa: "Ferretería Santa Elena, C.A",
-    año: "2024",
-    estado: "Finalizado",
-    descripcion: "Brindé apoyo en contabilidad, ventas, administración y seguridad informática. También implementé compras a crédito por Cashea y realicé la parametrización entre Profit Plus y el banco BNC.",
-    logro: "Desarrollo de una aplicación de escritorio local en Python para gestionar de manera ágil y segura las cuentas por cobrar sin necesidad de conexión a internet."
-  }
-];
+import { useLanguage } from '@/context/LanguageContext';
 
 const Experience = () => {
+  const { t } = useLanguage();
   const [verMas, setVerMas] = useState(false);
+
+  const experiences = t.experience.items;
   const visibles = experiences.slice(0, 3);
   const extras = experiences.slice(3);
 
-  const renderItem = (exp: ExperienceItem, index: number, baseDelay = 0) => (
+  const renderItem = (exp: typeof experiences[0], index: number, baseDelay = 0) => (
     <motion.div
       key={index}
       className="border-l-2 border-gray-200 pl-6 relative group"
@@ -72,10 +31,10 @@ const Experience = () => {
           <div>
             <h3 className="text-lg font-medium">{exp.cargo}</h3>
             {exp.link ? (
-              <a 
-                href={exp.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={exp.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-700 text-sm flex items-center gap-1 transition-colors w-fit"
               >
                 {exp.empresa}
@@ -91,8 +50,11 @@ const Experience = () => {
           </div>
           <div className="flex flex-col items-end">
             <span className="text-sm text-gray-500">{exp.año}</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full ${exp.estado === 'Actualmente' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
-              }`}>
+            <span className={`text-xs px-2 py-0.5 rounded-full ${
+              exp.estado === t.experience.actualmente
+                ? 'bg-green-100 text-green-800'
+                : 'bg-gray-100 text-gray-800'
+            }`}>
               {exp.estado}
             </span>
           </div>
@@ -119,7 +81,7 @@ const Experience = () => {
                 <circle cx="12" cy="8" r="6"/>
                 <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
               </svg>
-              Logro Destacado
+              {t.experience.logroLabel}
             </span>
             <p className="pl-6 text-gray-700 leading-relaxed">{exp.logro}</p>
           </motion.div>
@@ -145,7 +107,7 @@ const Experience = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Experiencia Profesional
+          {t.experience.heading}
         </motion.h2>
         <div className="space-y-12">
           {visibles.map((exp, index) => renderItem(exp, index))}
@@ -172,7 +134,7 @@ const Experience = () => {
               onClick={() => setVerMas(!verMas)}
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gray-300 text-sm text-gray-600 hover:border-blue-500 hover:text-blue-600 transition-colors"
             >
-              {verMas ? 'Ver menos' : `Ver más (${extras.length} más)`}
+              {verMas ? t.experience.verMenos : t.experience.verMas(extras.length)}
               <span className={`transition-transform duration-300 ${verMas ? 'rotate-180' : ''}`}>↓</span>
             </button>
           </div>

@@ -221,3 +221,249 @@ section, div {
 .overflow-x-hidden {
   overflow-x: hidden;
 }
+
+/* Custom CV Download Button Styles */
+.cv-button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  color: #0f1923;
+  cursor: pointer;
+  position: relative;
+  padding: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all .15s ease;
+  display: inline-block;
+}
+
+.cv-button::before,
+.cv-button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: calc(50% - 5px);
+  border: 1px solid #7D8082;
+  transition: all .15s ease;
+}
+
+.cv-button::before {
+  top: 0;
+  border-bottom-width: 0;
+}
+
+.cv-button::after {
+  bottom: 0;
+  border-top-width: 0;
+}
+
+.cv-button:active,
+.cv-button:focus {
+  outline: none;
+}
+
+.cv-button:active::before,
+.cv-button:active::after {
+  right: 3px;
+  left: 3px;
+}
+
+.cv-button:active::before {
+  top: 3px;
+}
+
+.cv-button:active::after {
+  bottom: 3px;
+}
+
+.cv-button_lg {
+  position: relative;
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #0f1923;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.cv-button_lg::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: #0f1923;
+}
+
+.cv-button_lg::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #0f1923;
+  transition: all .2s ease;
+}
+
+.cv-button_sl {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: -8px;
+  width: 0;
+  background-color: #5f02c9;
+  transform: skew(-15deg);
+  transition: all .2s ease;
+}
+
+.cv-button_text {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cv-button:hover {
+  color: #0f1923;
+}
+
+.cv-button:hover .cv-button_sl {
+  width: calc(100% + 15px);
+}
+
+.cv-button:hover .cv-button_lg::after {
+  background-color: #fff;
+}
+
+/* Custom Project Button Styles (Blue version) */
+.project-button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  color: #0f1923;
+  cursor: pointer;
+  position: relative;
+  padding: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all .15s ease;
+  display: inline-block;
+}
+
+.project-button::before,
+.project-button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: calc(50% - 5px);
+  border: 1px solid #7D8082;
+  transition: all .15s ease;
+}
+
+.project-button::before {
+  top: 0;
+  border-bottom-width: 0;
+}
+
+.project-button::after {
+  bottom: 0;
+  border-top-width: 0;
+}
+
+.project-button:active,
+.project-button:focus {
+  outline: none;
+}
+
+.project-button:active::before,
+.project-button:active::after {
+  right: 3px;
+  left: 3px;
+}
+
+.project-button:active::before {
+  top: 3px;
+}
+
+.project-button:active::after {
+  bottom: 3px;
+}
+
+.project-button_lg {
+  position: relative;
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #0f1923;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.project-button_lg::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: #0f1923;
+}
+
+.project-button_lg::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #0f1923;
+  transition: all .2s ease;
+}
+
+.project-button_sl {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: -8px;
+  width: 0;
+  background-color: #2563eb; /* Blue sliding effect */
+  transform: skew(-15deg);
+  transition: all .2s ease;
+}
+
+.project-button_text {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-button:hover {
+  color: #0f1923;
+}
+
+.project-button:hover .project-button_sl {
+  width: calc(100% + 15px);
+}
+
+.project-button:hover .project-button_lg::after {
+  background-color: #fff;
+}

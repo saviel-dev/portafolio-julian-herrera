@@ -1,8 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
+
   return (
     <motion.section
       id="sobre-mi"
@@ -64,7 +67,7 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
-            >Sobre Mí</motion.h2>
+            >{t.about.label}</motion.h2>
             <motion.h3
               className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -72,7 +75,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Construyendo productos claros, funcionales y bien organizados
+              {t.about.heading}
             </motion.h3>
             <motion.p
               className="text-gray-600 mb-4"
@@ -81,9 +84,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              Soy desarrollador web con formación en informática y experiencia en la creación de soluciones digitales,
-              automatización de tareas y apoyo a proyectos web. Me apasiona construir productos bien organizados
-              y siempre busco aportar valor real.
+              {t.about.p1}
             </motion.p>
             <motion.p
               className="text-gray-600 mb-6"
@@ -92,8 +93,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              Me enfoco en construir productos claros, funcionales y bien organizados, siempre buscando aportar valor,
-              aprender continuamente y trabajar con compromiso.
+              {t.about.p2}
             </motion.p>
 
             <motion.div
@@ -103,59 +103,30 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              <motion.div
-                className="bg-white p-4 rounded-lg shadow-sm"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 1.0 }}
-              >
-                <h4 className="font-bold text-gray-900 mb-2">Frontend</h4>
+              <motion.div className="bg-white p-4 rounded-lg shadow-sm" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 1.0 }}>
+                <h4 className="font-bold text-gray-900 mb-2">{t.about.frontend}</h4>
                 <p className="text-sm text-gray-600">HTML, CSS, JavaScript, TypeScript, React, Tailwind CSS, Bootstrap</p>
               </motion.div>
-              <motion.div
-                className="bg-white p-4 rounded-lg shadow-sm"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 1.1 }}
-              >
-                <h4 className="font-bold text-gray-900 mb-2">Backend</h4>
+              <motion.div className="bg-white p-4 rounded-lg shadow-sm" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 1.1 }}>
+                <h4 className="font-bold text-gray-900 mb-2">{t.about.backend}</h4>
                 <p className="text-sm text-gray-600">Node.js, PHP, Python, Java</p>
               </motion.div>
-              <motion.div
-                className="bg-white p-4 rounded-lg shadow-sm"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 1.2 }}
-              >
-                <h4 className="font-bold text-gray-900 mb-2">Bases de Datos</h4>
+              <motion.div className="bg-white p-4 rounded-lg shadow-sm" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 1.2 }}>
+                <h4 className="font-bold text-gray-900 mb-2">{t.about.baseDatos}</h4>
                 <p className="text-sm text-gray-500 leading-relaxed">MySQL, PostgreSQL, Supabase</p>
               </motion.div>
-              <motion.div
-                className="bg-white p-4 rounded-lg shadow-sm"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 1.3 }}
-              >
-                <h4 className="font-bold text-gray-900 mb-2">Herramientas</h4>
+              <motion.div className="bg-white p-4 rounded-lg shadow-sm" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 1.3 }}>
+                <h4 className="font-bold text-gray-900 mb-2">{t.about.herramientas}</h4>
                 <p className="text-sm text-gray-500 leading-relaxed">Git, GitHub, Trello, n8n, Docker, Postman</p>
               </motion.div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 1.4 }}
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 1.4 }}>
               <Button
                 className="bg-blue-600 hover:bg-blue-700 inline-flex items-center gap-2"
                 onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Contáctame
+                {t.about.contactame}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
                   <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                 </svg>

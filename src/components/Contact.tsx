@@ -1,17 +1,14 @@
 
 import { useState, FormEvent, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaEnvelope, FaGithub, FaGlobe } from "react-icons/fa";
+import Swal from 'sweetalert2';
+import { FaLinkedin, FaEnvelope, FaGithub } from "react-icons/fa";
+import { useLanguage } from '@/context/LanguageContext';
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const { t } = useLanguage();
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -22,71 +19,47 @@ const Contact = () => {
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'El nombre es requerido';
-    }
-
+    if (!formData.name.trim()) newErrors.name = t.contact.errors.nombreReq;
     if (!formData.email.trim()) {
-      newErrors.email = 'El correo electrónico es requerido';
+      newErrors.email = t.contact.errors.emailReq;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Por favor ingresa un correo electrónico válido';
+      newErrors.email = t.contact.errors.emailInvalid;
     }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'El mensaje es requerido';
-    }
-
+    if (!formData.message.trim()) newErrors.message = t.contact.errors.mensajeReq;
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
+    if (!validateForm()) return;
     setIsSubmitting(true);
 
     try {
       const response = await fetch('https://formspree.io/f/mjkyvgdr', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message }),
       });
 
-      if (!response.ok) {
-        throw new Error('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
-      }
+      if (!response.ok) throw new Error(t.contact.swal.errorFallback);
 
-      // Show success message
-      toast({
-        title: "¡Mensaje enviado con éxito!",
-        description: "Gracias por contactarme. Te responderé lo más pronto posible.",
+      Swal.fire({
+        title: t.contact.swal.successTitle,
+        text: t.contact.swal.successText,
+        icon: 'success',
+        confirmButtonColor: '#2563eb',
+        confirmButtonText: t.contact.swal.successBtn,
       });
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", message: "" });
       setErrors({});
-
     } catch (error) {
-      console.error('Error:', error);
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : 'Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.',
-        variant: 'destructive',
+      Swal.fire({
+        title: t.contact.swal.errorTitle,
+        text: error instanceof Error ? error.message : t.contact.swal.errorFallback,
+        icon: 'error',
+        confirmButtonColor: '#2563eb',
       });
     } finally {
       setIsSubmitting(false);
@@ -97,38 +70,15 @@ const Contact = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
   };
-
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 15,
-      },
-    },
+    visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100, damping: 15 } },
   };
-
   const buttonVariants = {
     initial: { scale: 1 },
-    hover: {
-      scale: 1.02,
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 15
-      }
-    },
+    hover: { scale: 1.02, transition: { type: 'spring', stiffness: 400, damping: 15 } },
     tap: { scale: 0.98 },
   };
 
@@ -149,7 +99,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            ¿Tienes un proyecto en mente?
+            {t.contact.heading}
           </motion.h2>
           <motion.p
             className="text-lg text-gray-600 max-w-2xl mx-auto"
@@ -158,7 +108,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            Estoy disponible para oportunidades de trabajo y colaboraciones. Envíame un mensaje y te responderé lo antes posible.
+            {t.contact.subheading}
           </motion.p>
         </motion.div>
 
@@ -169,75 +119,48 @@ const Contact = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.div
-            className="space-y-8"
-            variants={itemVariants}
-          >
-            <motion.div
-              className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
-              whileHover={{ y: -5 }}
-            >
+          <motion.div className="space-y-8" variants={itemVariants}>
+            <motion.div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100" whileHover={{ y: -5 }}>
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
                   <FaEnvelope className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Correo electrónico</h3>
-                  <a
-                    href="mailto:saviel.dev@gmail.com"
-                    className="text-blue-600 hover:underline break-all"
-                  >
+                  <h3 className="font-semibold text-gray-900 mb-1">{t.contact.email}</h3>
+                  <a href="mailto:saviel.dev@gmail.com" className="text-blue-600 hover:underline break-all">
                     saviel.dev@gmail.com
                   </a>
                 </div>
               </div>
             </motion.div>
 
-
-            <motion.div
-              className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
-              whileHover={{ y: -5 }}
-            >
+            <motion.div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100" whileHover={{ y: -5 }}>
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
                   <FaLinkedin className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">LinkedIn</h3>
-                  <a
-                    href="https://www.linkedin.com/in/saviel-julian-isculpi-herrera-102818346/"
-                    className="text-blue-600 hover:underline break-all"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="https://www.linkedin.com/in/saviel-julian-isculpi-herrera-102818346/" className="text-blue-600 hover:underline break-all" target="_blank" rel="noopener noreferrer">
                     linkedin.com/in/saviel-julian-isculpi-herrera
                   </a>
                 </div>
               </div>
             </motion.div>
 
-            <motion.div
-              className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
-              whileHover={{ y: -5 }}
-            >
+            <motion.div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100" whileHover={{ y: -5 }}>
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
                   <FaGithub className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">GitHub</h3>
-                  <a
-                    href="https://github.com/saviel-dev/"
-                    className="text-blue-600 hover:underline break-all"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="https://github.com/saviel-dev/" className="text-blue-600 hover:underline break-all" target="_blank" rel="noopener noreferrer">
                     github.com/saviel-dev
                   </a>
                 </div>
               </div>
             </motion.div>
-
           </motion.div>
 
           <motion.form
@@ -247,9 +170,10 @@ const Contact = () => {
             variants={itemVariants}
           >
             <div className="space-y-6">
+              {/* Name */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Nombre completo <span className="text-red-500">*</span>
+                  {t.contact.nombre} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <div className="relative">
@@ -261,18 +185,16 @@ const Contact = () => {
                       onChange={handleChange}
                       onBlur={() => {
                         if (!formData.name.trim()) {
-                          setErrors(prev => ({ ...prev, name: 'El nombre es requerido' }));
+                          setErrors(prev => ({ ...prev, name: t.contact.errors.nombreReq }));
                         } else if (errors.name) {
                           const { name, ...rest } = errors;
                           setErrors(rest);
                         }
                       }}
                       className={`w-full px-4 py-3 border ${errors.name ? 'border-red-500' : 'border-gray-200'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200`}
-                      placeholder="Tu nombre"
+                      placeholder={t.contact.placeholder.nombre}
                     />
-                    {errors.name && (
-                      <p className="mt-1 text-sm text-red-600">{errors.name}</p>
-                    )}
+                    {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
                   </div>
                   <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                     <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -282,9 +204,10 @@ const Contact = () => {
                 </div>
               </div>
 
+              {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Correo electrónico <span className="text-red-500">*</span>
+                  {t.contact.email} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <div className="relative">
@@ -296,20 +219,18 @@ const Contact = () => {
                       onChange={handleChange}
                       onBlur={() => {
                         if (!formData.email.trim()) {
-                          setErrors(prev => ({ ...prev, email: 'El correo electrónico es requerido' }));
+                          setErrors(prev => ({ ...prev, email: t.contact.errors.emailReq }));
                         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-                          setErrors(prev => ({ ...prev, email: 'Por favor ingresa un correo electrónico válido' }));
+                          setErrors(prev => ({ ...prev, email: t.contact.errors.emailInvalid }));
                         } else if (errors.email) {
                           const { email, ...rest } = errors;
                           setErrors(rest);
                         }
                       }}
                       className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-200'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200`}
-                      placeholder="tu@email.com"
+                      placeholder={t.contact.placeholder.email}
                     />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-                    )}
+                    {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
                   </div>
                   <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                     <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -319,9 +240,10 @@ const Contact = () => {
                 </div>
               </div>
 
+              {/* Message */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Mensaje <span className="text-red-500">*</span>
+                  {t.contact.mensaje} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <div className="relative">
@@ -332,7 +254,7 @@ const Contact = () => {
                       onChange={handleChange}
                       onBlur={() => {
                         if (!formData.message.trim()) {
-                          setErrors(prev => ({ ...prev, message: 'El mensaje es requerido' }));
+                          setErrors(prev => ({ ...prev, message: t.contact.errors.mensajeReq }));
                         } else if (errors.message) {
                           const { message, ...rest } = errors;
                           setErrors(rest);
@@ -340,11 +262,9 @@ const Contact = () => {
                       }}
                       rows={5}
                       className={`w-full px-4 py-3 border ${errors.message ? 'border-red-500' : 'border-gray-200'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200 resize-none`}
-                      placeholder="Cuéntame sobre tu proyecto..."
+                      placeholder={t.contact.placeholder.mensaje}
                     ></textarea>
-                    {errors.message && (
-                      <p className="mt-1 text-sm text-red-600">{errors.message}</p>
-                    )}
+                    {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
                   </div>
                   <div className="absolute top-3 right-3 flex items-center pr-3 pointer-events-none">
                     <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -354,13 +274,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <motion.div
-                variants={buttonVariants}
-                initial="initial"
-                whileHover="hover"
-                whileTap="tap"
-                className="w-full"
-              >
+              <motion.div variants={buttonVariants} initial="initial" whileHover="hover" whileTap="tap" className="w-full">
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -372,28 +286,19 @@ const Contact = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Enviando...
+                      {t.contact.enviando}
                     </span>
                   ) : (
                     <>
                       <div className="svg-wrapper-1">
                         <div className="svg-wrapper">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            height="24"
-                            className="text-white"
-                          >
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" className="text-white">
                             <path fill="none" d="M0 0h24v24H0z"></path>
-                            <path
-                              fill="currentColor"
-                              d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
-                            ></path>
+                            <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
                           </svg>
                         </div>
                       </div>
-                      <span className="ml-2">Enviar mensaje</span>
+                      <span className="ml-2">{t.contact.enviar}</span>
                     </>
                   )}
                 </button>
