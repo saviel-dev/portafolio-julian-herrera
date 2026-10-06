@@ -2,6 +2,7 @@ import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaNodeJs, FaDown
 import { SiTailwindcss, SiMysql, SiN8N, SiPostman, SiPostgresql, SiDocker, SiSupabase } from 'react-icons/si';
 import { useEffect, useState } from "react";
 import { useLanguage } from '@/context/LanguageContext';
+import HeroGraphic from './HeroGraphic';
 
 const technologies = [
   { name: 'HTML | CSS | JS', icon: <div className="flex -space-x-1 mr-1"><FaHtml5 className="w-4 h-4 text-[#E34F26] relative z-30" /><FaCss3Alt className="w-4 h-4 text-[#1572B6] relative z-20" /><FaJs className="w-4 h-4 text-[#F7DF1E] relative z-10" /></div> },
@@ -57,8 +58,9 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="max-w-3xl">
-          <p className="text-blue-600 font-semibold mb-3 animate-fade-in tracking-wide text-sm uppercase">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl">
+            <p className="text-blue-600 font-semibold mb-3 animate-fade-in tracking-wide text-sm uppercase">
             {t.hero.greeting}
           </p>
           <h1 className="text-5xl md:text-5xl font-extrabold text-gray-900 mb-5 animate-fade-in-delay-200 leading-tight tracking-tight">
@@ -111,6 +113,11 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        
+        <div className="hidden lg:flex justify-center items-center animate-fade-in-delay-400 lg:self-start lg:mt-6">
+          <HeroGraphic />
+        </div>
+      </div>
       </div>
 
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-0 animate-fade-in-delay-1200">
