@@ -173,7 +173,37 @@ const translations: Record<Language, Translations> = {
       description: 'Una muestra de mis proyectos recientes. Cada uno demuestra diferentes habilidades y soluciones a problemas reales.',
       vistaLista: 'Vista de lista',
       vistaTarjetas: 'Vista de tarjetas',
+      verMas: 'Ver más',
+      verMenos: 'Ver menos',
       items: [
+        {
+          title: 'eSource Capital',
+          description: 'Colaboración en el desarrollo del sitio web de eSource Capital, mejorando la presencia digital y optimizando la experiencia de usuario en la plataforma.',
+        },
+        {
+          title: 'Loop Studio',
+          description: 'Desarrollo colaborativo para el sitio web de Loop Studio, una empresa de desarrollo y diseño de software seguro enfocada en ciberseguridad, inteligencia artificial y modernización de sistemas.',
+        },
+        {
+          title: 'Xetux POS - Landing Page',
+          description: 'Página web para la venta de software. Xetux ofrece software de punto de venta e inventario para automatizar y gestionar restaurantes y comercios retail en Venezuela.',
+        },
+        {
+          title: 'FullCarro',
+          description: 'Plataforma digital para la compra y venta de vehículos nuevos y usados en Venezuela, ofreciendo una experiencia segura y rápida.',
+        },
+        {
+          title: 'Landing Page Evolvix Global',
+          description: 'Landing page corporativa para Evolvix Global, un grupo B2B que transforma operaciones empresariales en crecimiento medible. Ofrecen servicios de consultoría estratégica, desarrollo tecnológico, automatización, comercio internacional, inteligencia de negocio, seguridad digital, gestión de proyectos e inteligencia artificial.',
+        },
+        {
+          title: 'MFM CorpServe - Landing Page',
+          description: 'Landing page que ofrece consultoría en gestión estratégica, optimización de estructura y marketing para impulsar el crecimiento empresarial sostenible.',
+        },
+        {
+          title: 'IUTTOL Universidad - Landing Page',
+          description: 'Diseño y desarrollo de una landing page moderna para el Instituto Universitario de Tecnología de los Llanos (IUTTOL), enfocada en la captación de nuevos estudiantes y la presentación de ofertas académicas.',
+        },
         {
           title: 'Página Web - Kalhua Café',
           description: 'Página web para un emprendimiento de cafetería en Venezuela, especializado en marquesas y próximamente café. Desarrollado con tecnologías modernas y diseño responsivo.',
@@ -185,22 +215,6 @@ const translations: Record<Language, Translations> = {
         {
           title: 'Babygoo - MVP de Tienda Online para Bebés',
           description: 'MVP de una tienda virtual especializada en ropa y accesorios para bebés, con catálogo de productos, carrito de compras y panel de administración básico para la gestión de inventario.',
-        },
-        {
-          title: 'IUTTOL Universidad - Landing Page',
-          description: 'Diseño y desarrollo de una landing page moderna para el Instituto Universitario de Tecnología de los Llanos (IUTTOL), enfocada en la captación de nuevos estudiantes y la presentación de ofertas académicas.',
-        },
-        {
-          title: 'Landing Page Evolvix Global',
-          description: 'Landing page corporativa para Evolvix Global, un grupo B2B que transforma operaciones empresariales en crecimiento medible. Ofrecen servicios de consultoría estratégica, desarrollo tecnológico, automatización, comercio internacional, inteligencia de negocio, seguridad digital, gestión de proyectos e inteligencia artificial.',
-        },
-        {
-          title: 'Landing Page MetaTok AI',
-          description: 'Landing page para MetaTok AI, una plataforma que automatiza negocios mediante agentes de IA disponibles 24/7. Incluye funcionalidades para ventas, soporte al cliente, cobros, gestión de redes sociales, voicebots, cualificación de leads, integración con CRM, agendamiento automático y soluciones white-label.',
-        },
-        {
-          title: 'MetaTok AI Landing Page',
-          description: 'Landing page for MetaTok AI, a platform that automates businesses with 24/7 AI agents. Features include sales, customer support, collections, social media management, voicebots, lead qualification, CRM integration, scheduling, and white-label solutions.',
         },
       ],
     },
@@ -312,7 +326,37 @@ const translations: Record<Language, Translations> = {
       description: 'A showcase of my recent projects. Each one demonstrates different skills and solutions to real-world problems.',
       vistaLista: 'List view',
       vistaTarjetas: 'Card view',
+      verMas: 'View more',
+      verMenos: 'View less',
       items: [
+        {
+          title: 'eSource Capital',
+          description: 'Collaboration in the development of the eSource Capital website, improving digital presence and optimizing the user experience on the platform.',
+        },
+        {
+          title: 'Loop Studio',
+          description: 'Collaborative development for the Loop Studio website, a secure software development and design company focused on cybersecurity, artificial intelligence, and system modernization.',
+        },
+        {
+          title: 'Xetux POS - Landing Page',
+          description: 'Landing page for software sales. Xetux offers point-of-sale and inventory software to automate and manage restaurants and retail businesses in Venezuela.',
+        },
+        {
+          title: 'FullCarro',
+          description: 'Digital platform for buying and selling new and used vehicles in Venezuela, offering a secure and fast experience.',
+        },
+        {
+          title: 'Evolvix Global Landing Page',
+          description: 'Corporate landing page for Evolvix Global, a B2B group that transforms business operations into measurable growth. They offer strategic consulting, technological development, automation, international trade, business intelligence, digital security, project delivery, and AI.',
+        },
+        {
+          title: 'MFM CorpServe - Landing Page',
+          description: 'Landing page that offers consulting in strategic management, structural optimization, and marketing to drive sustainable business growth.',
+        },
+        {
+          title: 'IUTTOL University - Landing Page',
+          description: 'Design and development of a modern landing page for the University Institute of Technology of the Plains (IUTTOL), focused on attracting new students and presenting academic offerings.',
+        },
         {
           title: 'Website - Kalhua Café',
           description: 'Website for a cafeteria startup in Venezuela, specialized in marquesas and soon coffee. Developed with modern technologies and responsive design.',
@@ -324,22 +368,6 @@ const translations: Record<Language, Translations> = {
         {
           title: 'Babygoo - Baby Online Store MVP',
           description: 'MVP of a virtual store specialized in baby clothing and accessories, with product catalog, shopping cart, and basic admin panel for inventory management.',
-        },
-        {
-          title: 'IUTTOL University - Landing Page',
-          description: 'Design and development of a modern landing page for the University Institute of Technology of the Plains (IUTTOL), focused on attracting new students and presenting academic offerings.',
-        },
-        {
-          title: 'Evolvix Global Landing Page',
-          description: 'Corporate landing page for Evolvix Global, a B2B group that transforms business operations into measurable growth. They offer strategic consulting, technological development, automation, international trade, business intelligence, digital security, project delivery, and AI.',
-        },
-        {
-          title: 'Landing Page MetaTok AI',
-          description: 'Landing page para MetaTok AI, una plataforma que automatiza negocios mediante agentes de IA disponibles 24/7. Incluye funcionalidades para ventas, soporte al cliente, cobros, gestión de redes sociales, voicebots, cualificación de leads, integración con CRM, agendamiento automático y soluciones white-label.',
-        },
-        {
-          title: 'MetaTok AI Landing Page',
-          description: 'Landing page for MetaTok AI, a platform that automates businesses with 24/7 AI agents. Features include sales, customer support, collections, social media management, voicebots, lead qualification, CRM integration, scheduling, and white-label solutions.',
         },
       ],
     },

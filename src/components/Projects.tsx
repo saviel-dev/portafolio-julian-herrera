@@ -1,12 +1,86 @@
 import ProjectCard from "./ProjectCard";
 import { useState } from "react";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaBootstrap, FaGithub, FaLaravel, FaNodeJs, FaBolt, FaCode, FaList, FaThLarge } from 'react-icons/fa';
-import { SiTypescript, SiTailwindcss, SiMysql, SiMongodb, SiWebrtc, SiLaravel, SiSupabase, SiGit, SiFramer } from 'react-icons/si';
+import { SiTypescript, SiTailwindcss, SiMysql, SiMongodb, SiWebrtc, SiLaravel, SiSupabase, SiGit, SiFramer, SiNextdotjs, SiGooglecloud, SiDocker } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 
 // Static project metadata (links, images, technologies) - untranslated
 const projectsMeta = [
+  {
+    image: "/img/esc.png",
+    technologies: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Node.js", icon: FaNodeJs },
+      { name: "Google Cloud", icon: SiGooglecloud },
+      { name: "Docker", icon: SiDocker },
+    ],
+    demoLink: "https://www.esourcecapital.com/es",
+  },
+  {
+    image: "/img/loopstudio.png",
+    technologies: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Node.js", icon: FaNodeJs },
+    ],
+    demoLink: "https://loopstudio.dev/",
+  },
+  {
+    image: "/img/xetux pos.png",
+    technologies: [
+      { name: "React", icon: FaReact },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Framer Motion", icon: SiFramer },
+    ],
+    demoLink: "https://xetux.com/ve/",
+  },
+  {
+    image: "/img/fullcarro.png",
+    technologies: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Node.js", icon: FaNodeJs },
+    ],
+    demoLink: "https://ve.fullcarro.com/",
+  },
+  {
+    image: "/img/evolvix global.png",
+    technologies: [
+      { name: "HTML5", icon: FaHtml5 },
+      { name: "CSS3", icon: FaCss3Alt },
+      { name: "JavaScript", icon: FaJs },
+      { name: "React", icon: FaReact },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+    ],
+    demoLink: "https://evolvixglobal.es",
+  },
+  {
+    image: "/img/mfmcorpserve.png",
+    technologies: [
+      { name: "React", icon: FaReact },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Framer Motion", icon: SiFramer },
+    ],
+    demoLink: "https://www.mfmcorpserve.com/",
+  },
+  {
+    image: "/img/iuttol-web.png",
+    technologies: [
+      { name: "React", icon: FaReact },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Framer Motion", icon: SiFramer },
+      { name: "TypeScript", icon: SiTypescript },
+    ],
+    codeLink: "https://github.com/saviel-dev/web-universitaria",
+    demoLink: "https://iuttol.vercel.app/",
+  },
   {
     image: "/img/kalhua cafe.png",
     technologies: [
@@ -53,44 +127,12 @@ const projectsMeta = [
     codeLink: "https://github.com/saviel-dev/babygoo-shop",
     demoLink: "https://babygoo-tienda-online.vercel.app/",
   },
-  {
-    image: "/img/iuttol-web.png",
-    technologies: [
-      { name: "React", icon: FaReact },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "Framer Motion", icon: SiFramer },
-      { name: "TypeScript", icon: SiTypescript },
-    ],
-    codeLink: "https://github.com/saviel-dev/web-universitaria",
-    demoLink: "https://iuttol.vercel.app/",
-  },
-  {
-    image: "/img/evolvix global.png",
-    technologies: [
-      { name: "HTML5", icon: FaHtml5 },
-      { name: "CSS3", icon: FaCss3Alt },
-      { name: "JavaScript", icon: FaJs },
-      { name: "React", icon: FaReact },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-    ],
-    demoLink: "https://evolvixglobal.es",
-  },
-  {
-    image: "/img/metatok ai.png",
-    technologies: [
-      { name: "HTML5", icon: FaHtml5 },
-      { name: "CSS3", icon: FaCss3Alt },
-      { name: "JavaScript", icon: FaJs },
-      { name: "React", icon: FaReact },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-    ],
-    demoLink: "https://metatok.ai",
-  },
 ];
 
 const Projects = () => {
   const { t } = useLanguage();
-  const [viewMode, setViewMode] = useState<'lista' | 'cards'>('lista');
+  const [viewMode, setViewMode] = useState<'lista' | 'cards'>('cards');
+  const [showAll, setShowAll] = useState(false);
 
   // Merge translated text with static metadata
   const projects = projectsMeta.map((meta, i) => ({
@@ -108,7 +150,7 @@ const Projects = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-4 md:px-10 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-10 max-w-[1400px]">
         <motion.div
           className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
           initial={{ opacity: 0, y: 20 }}
@@ -170,13 +212,13 @@ const Projects = () => {
         </motion.div>
 
         <motion.div
-          className={viewMode === 'lista' ? "flex flex-col gap-8" : "grid grid-cols-1 md:grid-cols-2 gap-8"}
+          className={viewMode === 'lista' ? "flex flex-col gap-8 max-w-4xl mx-auto" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          {projects.map((project, index) => (
+          {(showAll ? projects : projects.slice(0, 6)).map((project, index) => (
             <ProjectCard
               key={index}
               index={index}
@@ -190,6 +232,23 @@ const Projects = () => {
             />
           ))}
         </motion.div>
+
+        {projects.length > 6 && (
+          <motion.div 
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md active:scale-95"
+            >
+              {showAll ? (t.projects.verMenos || 'Ver menos') : (t.projects.verMas || 'Ver más')}
+            </button>
+          </motion.div>
+        )}
       </div>
     </motion.section>
   );
